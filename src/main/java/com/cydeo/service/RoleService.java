@@ -1,10 +1,11 @@
 package com.cydeo.service;
 
-import com.cydeo.entity.User;
-
+import com.cydeo.dto.RoleDTO;
 import java.util.List;
 
 public interface RoleService {
 
+    List<RoleDTO> listAllRoles();
+    RoleDTO findById(Long id);
 
 }
