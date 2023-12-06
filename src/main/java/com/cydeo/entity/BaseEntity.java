@@ -21,7 +21,7 @@ public class BaseEntity {
     private LocalDateTime lastUpdateDateTime;
     private Long lastUpdateUserId;
 
-    //private boolean isDeleted=true;
+    private boolean isDeleted=true;
 
     @PrePersist
     public void onPrePersist(){
