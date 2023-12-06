@@ -13,7 +13,7 @@ public class ProjectDtoConverter implements Converter<String, ProjectDTO> {
 
     ProjectService projectService;
 
-    public ProjectDtoConverter(ProjectService projectService) {
+    public ProjectDtoConverter(@Lazy ProjectService projectService) {
         this.projectService = projectService;
     }
 
