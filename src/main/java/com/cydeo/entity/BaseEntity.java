@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -24,8 +21,9 @@ public class BaseEntity {
     private LocalDateTime lastUpdateDateTime;
     private Long lastUpdateUserId;
 
-    //private boolean isDeleted=false;
+    //private boolean isDeleted=true;
 
+    @PrePersist
     public void onPrePersist(){
         this.insertDateTime = LocalDateTime.now();
         this.lastUpdateDateTime = LocalDateTime.now();
