@@ -3,6 +3,7 @@ package com.cydeo.controller;
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.dto.UserDTO;
 //import com.cydeo.service.ProjectService;
+import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,24 +17,24 @@ import java.util.List;
 @RequestMapping("/project")
 public class ProjectController {
 
-//    private final ProjectService projectService;
-//    private final UserService userService;
-//
-//    public ProjectController(ProjectService projectService, UserService userService) {
-//        this.projectService = projectService;
-//        this.userService = userService;
-//    }
-//
-//    @GetMapping("/create")
-//    public String createProject(Model model) {
-//
-//        model.addAttribute("project", new ProjectDTO());
-//        model.addAttribute("projects", projectService.listAllProjects());
-//        model.addAttribute("managers", userService.listAllByRole("manager"));
-//
-//        return "/project/create";
-//
-//    }
+    private final ProjectService projectService;
+    private final UserService userService;
+
+    public ProjectController(ProjectService projectService, UserService userService) {
+        this.projectService = projectService;
+        this.userService = userService;
+    }
+
+    @GetMapping("/create")
+    public String createProject(Model model) {
+
+        model.addAttribute("project", new ProjectDTO());
+        model.addAttribute("projects", projectService.listAllProjects());
+        model.addAttribute("managers", userService.listAllByRole("manager"));
+
+        return "/project/create";
+
+    }
 //
 //    @PostMapping("/create")
 //    public String insertProject(@Valid @ModelAttribute("project") ProjectDTO project, BindingResult bindingResult, Model model) {
