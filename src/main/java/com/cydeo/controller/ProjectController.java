@@ -2,7 +2,6 @@ package com.cydeo.controller;
 
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.dto.UserDTO;
-//import com.cydeo.service.ProjectService;
 import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -54,11 +53,11 @@ public class ProjectController {
     }
 
 
-//    @GetMapping("/delete/{projectcode}")
-//    public String deleteProject(@PathVariable("projectcode") String projectcode) {
-//        projectService.delete(projectcode);
-//        return "redirect:/project/create";
-//    }
+    @GetMapping("/delete/{projectcode}")
+    public String deleteProject(@PathVariable("projectcode") String projectcode) {
+        projectService.delete(projectcode);
+        return "redirect:/project/create";
+    }
 //
 //    @GetMapping("/complete/{projectcode}")
 //    public String completeProject(@PathVariable("projectcode") String projectcode) {
