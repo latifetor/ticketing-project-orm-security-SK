@@ -2,6 +2,7 @@ package com.cydeo.service.impl;
 
 import com.cydeo.dto.TaskDTO;
 import com.cydeo.entity.Task;
+import com.cydeo.enums.Status;
 import com.cydeo.mapper.TaskMapper;
 import com.cydeo.repository.TaskRepository;
 import com.cydeo.service.TaskService;
@@ -30,12 +31,16 @@ public class TaskServiceImpl implements TaskService {
     public List<TaskDTO> listAllTasks() {
         List<Task> list = taskRepository.findAll();
         return list.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
+
+        // return taskRepository.findAll().stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
     }
 
     @Override
     public void save(TaskDTO dto) {
 
-
+        dto.setTaskStatus(Status.OPEN);
+        Task task = taskMapper.convertToEntity(dto);
+        taskRepository.save(task);
     }
 
     @Override
