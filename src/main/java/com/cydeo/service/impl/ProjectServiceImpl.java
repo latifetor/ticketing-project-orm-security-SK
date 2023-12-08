@@ -50,10 +50,16 @@ public class ProjectServiceImpl implements ProjectService {
 
         //Find current project based on project_code
         Project project = projectRepository.findByProjectCode(dto.getProjectCode());
+
         //Map updated project dto to entity object
         Project convertedProject = projectMapper.convertToEntity(dto);
-        //set  to converted object
+
+        //set Id  to converted object
         convertedProject.setId(project.getId());
+
+        // Converted the project and set the project status what we capture in the project  from DB
+        convertedProject.setProjectStatus(project.getProjectStatus());
+
         //save updated project
         projectRepository.save(convertedProject);
 
