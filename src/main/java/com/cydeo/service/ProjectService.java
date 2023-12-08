@@ -17,6 +17,6 @@ public interface ProjectService {
     void delete(String code);
 
 
-    void complete(String byProjectCode);
+    void complete(String ProjectCode);
 
 }
