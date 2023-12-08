@@ -57,4 +57,12 @@ public class ProjectServiceImpl implements ProjectService {
         project.setDeleted(true);
         projectRepository.save(project);
     }
+
+    @Override
+    public void complete(String ProjectCode) {
+
+        Project project = projectRepository.findByProjectCode(ProjectCode);
+        project.setProjectStatus(Status.COMPLETE);
+        projectRepository.save(project);
+    }
 }
