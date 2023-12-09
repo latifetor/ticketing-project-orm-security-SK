@@ -2,6 +2,7 @@ package com.cydeo.service.impl;
 
 import com.cydeo.dto.TaskDTO;
 import com.cydeo.entity.Task;
+import com.cydeo.entity.User;
 import com.cydeo.enums.Status;
 import com.cydeo.mapper.TaskMapper;
 import com.cydeo.repository.TaskRepository;
@@ -26,6 +27,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TaskDTO findById(Long id) {
+
+        Optional<Task> task = taskRepository.findById(id);
+
+        if (task.isPresent()){
+            return taskMapper.convertToDTO(task.get());
+        }
         return null;
     }
 
@@ -48,6 +55,16 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void update(TaskDTO dto) {
+
+        Optional<Task> task = taskRepository.findById(dto.getId());
+        Task convertedTask = taskMapper.convertToEntity(dto);
+
+        if(task.isPresent()){
+            convertedTask.setId(task.get().getId());
+            convertedTask.setTaskStatus(task.get().getTaskStatus());
+            convertedTask.setAssignedDate(task.get().getAssignedDate());
+            taskRepository.save(convertedTask);
+        }
 
     }
 
