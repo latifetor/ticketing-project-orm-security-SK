@@ -14,6 +14,6 @@ public interface TaskService {
 
     void update(TaskDTO dto);
 
-    void delete(TaskDTO dto);
+    void delete(Long dto);
 
 }
