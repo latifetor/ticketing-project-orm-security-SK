@@ -102,7 +102,7 @@ public class ProjectController {
 
         return "/manager/project-status";
     }
-//
+
 //    @GetMapping("/manager/complete/{projectCode}")
 //    public String managerCompleteProject(@PathVariable("projectCode") String projectCode) {
 //        projectService.complete(projectService.findById(projectCode));

@@ -8,6 +8,7 @@ import com.cydeo.enums.Status;
 import com.cydeo.mapper.ProjectMapper;
 import com.cydeo.mapper.UserMapper;
 import com.cydeo.repository.ProjectRepository;
+import com.cydeo.repository.TaskRepository;
 import com.cydeo.service.ProjectService;
 import com.cydeo.service.TaskService;
 import com.cydeo.service.UserService;
@@ -25,7 +26,8 @@ public class ProjectServiceImpl implements ProjectService {
     private final UserMapper userMapper;
     private final TaskService taskService;
 
-    public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper projectMapper, UserService userService, UserMapper userMapper, TaskService taskService) {
+    public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper projectMapper,
+                              UserService userService, UserMapper userMapper, TaskService taskService) {
         this.projectRepository = projectRepository;
         this.projectMapper = projectMapper;
         this.userService = userService;
@@ -102,8 +104,8 @@ public class ProjectServiceImpl implements ProjectService {
 
             ProjectDTO obj = projectMapper.convertToDto(project);
 
-            obj.setUnfinishedTaskCounts(3);
-            obj.setCompleteTaskCounts(5);
+            obj.setUnfinishedTaskCounts(taskService.totalNonCompletedTask(project.getProjectCode()));
+            obj.setCompleteTaskCounts(taskService.totalCompletedTask(project.getProjectCode()));
 
 
             return obj;
