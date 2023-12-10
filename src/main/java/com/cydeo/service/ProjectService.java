@@ -18,4 +18,6 @@ public interface ProjectService {
 
     void complete(String ProjectCode);
 
+    List<ProjectDTO> listAllProjectDetails();
+
 }
