@@ -24,4 +24,6 @@ public interface TaskService {
     void deleteByProject(ProjectDTO project);
 
 
+    void completeByProject(ProjectDTO project);
+
 }
