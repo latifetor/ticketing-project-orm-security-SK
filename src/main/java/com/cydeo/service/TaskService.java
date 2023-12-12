@@ -2,6 +2,7 @@ package com.cydeo.service;
 
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.dto.TaskDTO;
+import com.cydeo.entity.User;
 import com.cydeo.enums.Status;
 
 import java.util.List;
@@ -33,4 +34,5 @@ public interface TaskService {
 
     List<TaskDTO> listAllTasksByStatus(Status status);
 
+    List<TaskDTO> readAllByAssignedEmployee(User assignedEmployee);
 }
