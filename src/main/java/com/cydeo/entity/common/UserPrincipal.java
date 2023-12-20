@@ -11,7 +11,7 @@ import java.util.List;
 
 public class UserPrincipal implements UserDetails {
 
-    private final User user;
+    private User user;
 
     public UserPrincipal(User user) {
         this.user = user;
@@ -19,6 +19,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         List<GrantedAuthority> authorityList = new ArrayList<>();
 
         GrantedAuthority authority = new SimpleGrantedAuthority(this.user.getRole().getDescription());
@@ -30,11 +31,13 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getPassword() {
+
         return this.user.getPassWord();
     }
 
     @Override
     public String getUsername() {
+
         return this.user.getUserName();
     }
 
@@ -56,5 +59,9 @@ public class UserPrincipal implements UserDetails {
     @Override
     public boolean isEnabled() {
         return this.user.isEnabled();
+    }
+
+    public Long getId(){
+        return this.user.getId();
     }
 }
